@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+/* Global CSS Variables: https://www.w3schools.com/css/css3_variables.asp */
+/* Reference these in your CSS to get the same color as the mockups */
+:root {
+  --actionBackgroundColor: #f76b8a;
+  --actionTextColor: white;
+  --activeColor: #66bfbf;
+  --standardBackgroundColor: #fcfefe;
+  --alternativeBackgroundColor: #eaf6f6;
+  --standardTextColor: black;
+  --lightColor: lightgray;
+  --moderateColor: darkgray;
+  --defaultComponentHeight: 100px;
+  --defaultComponentWidth: 600px;
+  --formRadius: 10px;
+  --buttonRadius: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: var(--alternativeBackgroundColor);
+  user-select: none;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline-color: var(--activeColor);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+select {
+  border-color: var(--moderateColor);
 }
 
-.App-link {
-  color: #61dafb;
+input[type="text"] {
+  border-color: var(--lightColor);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button:hover {
+  transform: scale(1.1);
 }

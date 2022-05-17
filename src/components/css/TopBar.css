@@ -1,0 +1,68 @@
+#topBarContainer {
+  width: 100%;
+  background-color: var(--lightColor);
+  height: var(--defaultComponentHeight);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.topBarItem {
+  min-width: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+#topBarLogo {
+  width: 140px;
+  margin: auto 0px auto 0px;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+#topBarNavigate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+#topBarProfile {
+  width: 140px;
+  display: flex;
+}
+
+#topBarProfileImage {
+  margin: auto;
+}
+
+.topBarNavigateLink {
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 100%;
+  font-size: large;
+  display: flex;
+  align-items: center;
+}
+
+.topBarNavigateLink:hover {
+  color: var(--actionTextColor);
+}
+
+.topBarNavigateLink:visited {
+  color: var(--actionTextColor);
+}
+
+.topBarNavigateLink:active {
+  color: var(--activeColor);
+}
+
+.topBarNavigateLinkText {
+  margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+  #topBarLogo {
+    display: none;
+  }
+}

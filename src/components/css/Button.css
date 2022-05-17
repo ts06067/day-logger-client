@@ -1,0 +1,46 @@
+.btnSubmit {
+  width: 50px;
+  background-color: var(--actionBackgroundColor);
+}
+
+.btnSubmit:hover {
+  background-color: var(--alternativeBackgroundColor);
+}
+
+.btnSave {
+  width: 50px;
+  background-color: var(--actionBackgroundColor);
+}
+
+.btnSave:hover {
+  background-color: var(--alternativeBackgroundColor);
+}
+
+.btnLogOut {
+}
+
+.btnChooseNewImage {
+}
+
+.btnRemoveImage {
+}
+
+.btnPrevDate {
+  font-size: large;
+  font-weight: bold;
+}
+
+.btnNextDate {
+  font-size: large;
+  font-weight: bold;
+}
+
+.btnAddQuestion {
+  font-size: large;
+  font-weight: bold;
+}
+
+.btnDeleteQuestion {
+  font-size: large;
+  font-weight: bold;
+}

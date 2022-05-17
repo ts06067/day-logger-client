@@ -1,0 +1,69 @@
+.formComponentItem {
+  margin: 10px auto 10px auto;
+  width: var(--defaultComponentWidth);
+  background-color: var(--lightColor);
+}
+
+.formComponentItemsRow {
+  margin: 10px auto 10px auto;
+  width: var(--defaultComponentWidth);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.formComponentItemsColumn {
+  margin: 10px auto 10px auto;
+  width: var(--defaultComponentWidth);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.formQueryTypeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.formDateSelect {
+  margin: 10px auto 10px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: var(--defaultComponentWidth);
+}
+
+.formEditTitle {
+  margin: 10px auto 10px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: var(--defaultComponentWidth);
+}
+
+.formProfileEditContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+@media screen and (max-width: 600px) {
+  .formComponentItem {
+    width: 100%;
+  }
+
+  .formComponentItemsRow {
+    width: 100%;
+  }
+
+  .formDateSelect {
+    width: 100%;
+  }
+
+  .formEditQuestionTitle {
+    width: 100%;
+  }
+}
