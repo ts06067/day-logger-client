@@ -1,39 +1,76 @@
 import "./css/Button.css";
 
 function ButtonSubmit() {
-  return <div className="btnSubmit">submit</div>;
+  return <button className="btnSubmit">submit</button>;
 }
 
-function ButtonSave() {
-  return <div className="btnSave">save</div>;
+function ButtonSave(props) {
+  const onClick = (e) => {
+    e.preventDefault();
+    props.onClick();
+  };
+
+  return (
+    <button onClick={onClick} className="btnSave">
+      save
+    </button>
+  );
 }
 
 function ButtonLogOut() {
-  return <div className="btnLogout">logout</div>;
+  return <button className="btnLogout">logout</button>;
 }
 
 function ButtonChooseNewImage() {
-  return <div className="btnChooseNewImage">Choose New Image</div>;
+  return <button className="btnChooseNewImage">Choose New Image</button>;
 }
 
 function ButtonRemoveImage() {
-  return <div className="btnRemoveImage">Remove Image</div>;
+  return <button className="btnRemoveImage">Remove Image</button>;
 }
 
-function ButtonPrevDate() {
-  return <div className="btnPrevDate">prev</div>;
+function ButtonPrevDate(props) {
+  return (
+    <button onClick={props.onClick} className="btnPrevDate">
+      prev
+    </button>
+  );
 }
 
-function ButtonNextDate() {
-  return <div className="btnNextDate">next</div>;
+function ButtonNextDate(props) {
+  return (
+    <button onClick={props.onClick} className="btnNextDate">
+      next
+    </button>
+  );
 }
 
-function ButtonAddQuestion() {
-  return <div className="btnAddQuestion">add</div>;
+function ButtonAddQuestion(props) {
+  const onClick = (e) => {
+    e.preventDefault();
+    props.onClick();
+  };
+
+  return (
+    <button onClick={onClick} className="btnAddQuestion">
+      add
+    </button>
+  );
 }
 
-function ButtonDeleteQuestion() {
-  return <div className="btnDeleteQuestion">delete</div>;
+function ButtonDeleteQuestion(props) {
+  const _id = props.idToDelete;
+
+  const onClick = (e) => {
+    e.preventDefault();
+    props.onClick(_id);
+  };
+
+  return (
+    <button onClick={onClick} className="btnDeleteQuestion">
+      delete
+    </button>
+  );
 }
 
 export {
