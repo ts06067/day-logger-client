@@ -1,21 +1,17 @@
 import "./App.css";
 
-import {
-  BrowserRouter as Router,
-  useNavigate,
-  useRoutes,
-} from "react-router-dom";
+import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 
 //pages
-import PageLogDay from "./pages/PageLogDay";
-import PageEdit from "./pages/PageEdit";
-import PageViewData from "./pages/PageViewData";
-import PageLogIn from "./pages/PageLogIn";
-import PageProfile from "./pages/PageProfile";
-import PageAdmin from "./pages/PageAdmin";
+import PageLogDay from "./pages/log-day/PageLogDay";
+import PageEdit from "./pages/edit-question/PageEdit";
+import PageViewData from "./pages/view-data/PageViewData";
+import PageLogIn from "./pages/intro/PageLogIn";
+import PageProfile from "./pages/profile/PageProfile";
+import PageAdmin from "./pages/intro/PageAdmin";
 
 //components
-import TopBar from "./components/TopBar";
+import TopBar from "./components/common/TopBar";
 
 function AppRoutes() {
   const routes = useRoutes([

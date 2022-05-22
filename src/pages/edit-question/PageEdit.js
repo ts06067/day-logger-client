@@ -1,13 +1,10 @@
-import {
-  FormDefault,
-  FormEditQuestionTitle,
-  FormEditQuestionUserQuery,
-  FormSave,
-} from "../components/FormComponent";
-
-import "./css/PageCommon.css";
+import "../common/css/Page.css";
 
 import { useState } from "react";
+
+import { ButtonSave } from "../../components/common/Button";
+import { EditQuestionForm } from "../../components/edit-question/EditQuestionForm";
+import { EditQuestionTitle } from "../../components/edit-question/EditQuestionTitle";
 
 function PageEdit() {
   const [questionArr, setQuestionArr] = useState([]);
@@ -50,16 +47,16 @@ function PageEdit() {
   return (
     <div className="pageContainer">
       <form>
-        <FormEditQuestionTitle addQuestion={addQuestion} />
+        <EditQuestionTitle addQuestion={addQuestion} />
         {questionArr.map((question) => (
-          <FormEditQuestionUserQuery
+          <EditQuestionForm
             key={question._id}
             question={question}
             deleteQuestion={deleteQuestion}
             editQuestion={editQuestion}
           />
         ))}
-        <FormSave saveForm={saveQuestionArr} />
+        <ButtonSave onClick={saveQuestionArr} />
       </form>
     </div>
   );

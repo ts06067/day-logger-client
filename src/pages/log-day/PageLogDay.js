@@ -1,15 +1,10 @@
-import {
-  FormDefault,
-  FormDateSelect,
-  FormSubmit,
-  FormUserQuery,
-  FormLogDayUserQuery,
-  FormSave,
-} from "../components/FormComponent";
-
-import "./css/PageCommon.css";
+import "../common/css/Page.css";
 
 import { useEffect, useState } from "react";
+
+import { ButtonSave } from "../../components/common/Button";
+import { LogDayForm } from "../../components/log-day/LogDayForm";
+import { DateSelect } from "../../components/log-day/DateSelect";
 
 function PageLogDay() {
   const [questionArr, setQuestionArr] = useState([]);
@@ -37,12 +32,12 @@ function PageLogDay() {
       } else {
         //no logged data but question
         return questionArr.map((data) => (
-          <FormLogDayUserQuery key={data._id} data={data} date={date} />
+          <LogDayForm key={data._id} data={data} date={date} />
         ));
       }
     } else {
       return loggedDataArr.map((data) => (
-        <FormLogDayUserQuery data={data} date={date} />
+        <LogDayForm data={data} date={date} />
       ));
     }
   };
@@ -50,9 +45,9 @@ function PageLogDay() {
   return (
     <div className="pageContainer">
       <form>
-        <FormDateSelect date={date} setDate={setDate} />
+        <DateSelect date={date} setDate={setDate} />
         {render()}
-        <FormSave />
+        <ButtonSave />
       </form>
     </div>
   );
