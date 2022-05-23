@@ -17,6 +17,11 @@ function PageEdit() {
   //retrieve preset on load
   useEffect(() => {
     getQuestionSetAPIMethod().then((qs) => {
+      if (!qs) {
+        console.log("No Questions");
+        return;
+      }
+
       setQuestionEntryArr(qs.question_arr);
     });
   }, []);

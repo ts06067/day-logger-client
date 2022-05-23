@@ -2,43 +2,103 @@ import "../common/css/Page.css";
 
 import { useEffect, useState } from "react";
 
+import {
+  getQuestionSetAPIMethod,
+  getLoggedDataSetAPIMethod,
+  createLoggedDataSetAPIMethod,
+} from "../../api/client";
+
+import { dateTo8DStr, onFalseError } from "../../utils/helper";
+
 import { ButtonSave } from "../../components/common/Button";
 import { LogDayForm } from "../../components/log-day/LogDayForm";
 import { DateSelect } from "../../components/log-day/DateSelect";
 
 function PageLogDay() {
-  const [questionArr, setQuestionArr] = useState([]);
+  const [isLogged, setIsLogged] = useState(false);
+  const [questionEntryArr, setQuestionEntryArr] = useState([]);
+  const [loggedDataEntryArr, setLoggedDataEntryArr] = useState([]);
   const [date, setDate] = useState(new Date());
-  const [loggedDataArr, setLoggedDataArr] = useState([]);
 
-  //set QuestionArr on load
+  //retrieve preset on load
   useEffect(() => {
-    setQuestionArr([
-      { _id: 2345, type: "number", text: "sample1" },
-      { _id: 245, type: "boolean", text: "sample2" },
-      { _id: 45, type: "text", text: "sample3" },
-      { _id: 235, type: "multiple", text: "sample4" },
-    ]);
+    //get qs
+    getQuestionSetAPIMethod().then((qs) => {
+      if (!qs) {
+        console.log("No Questions");
+        return;
+      }
+      setQuestionEntryArr(qs.question_arr);
+    });
   }, []);
 
-  const isEmpty = (arr) => {
-    return arr.length === 0;
+  useEffect(() => {
+    //get lds
+    getLoggedDataSetAPIMethod(dateTo8DStr(date)).then((lds) => {
+      if (!lds) {
+        console.log("No LoggedDataSet");
+
+        if (questionEntryArr.length) {
+          const newLoggedDataEntryArr = [];
+          questionEntryArr.forEach((q) => {
+            newLoggedDataEntryArr.push({
+              _id: Math.random(), //random id for nonsaved obj
+              question: { ...q },
+              answer: "",
+            });
+            setLoggedDataEntryArr(newLoggedDataEntryArr);
+          });
+          console.log(newLoggedDataEntryArr);
+          setIsLogged(false); //mark unlogged
+        }
+        return;
+      }
+      setIsLogged(true); //mark logged
+      setLoggedDataEntryArr(lds.logged_data_arr);
+    });
+  }, [questionEntryArr, date]);
+
+  const editLoggedData = (name, value, i) => {
+    let newLoggedDataEntryArr = loggedDataEntryArr;
+    //find entry at index i
+    let newLoggedDataEntry = newLoggedDataEntryArr[i];
+    //change attr.
+    newLoggedDataEntry = { ...newLoggedDataEntry, [name]: value };
+    //reassign to a[i]
+    newLoggedDataEntryArr[i] = newLoggedDataEntry;
+    //update
+    setLoggedDataEntryArr(newLoggedDataEntryArr);
+
+    console.log(newLoggedDataEntryArr);
   };
 
-  const render = () => {
-    if (isEmpty(loggedDataArr)) {
-      if (isEmpty(questionArr)) {
-        return <>Make Question First</>;
-      } else {
-        //no logged data but question
-        return questionArr.map((data) => (
-          <LogDayForm key={data._id} data={data} date={date} />
-        ));
+  const saveLoggedDataArr = () => {
+    //check if any empty of less
+    let error = false;
+
+    loggedDataEntryArr.forEach((ld) => {
+      //logged data entry
+      const answer = ld.answer;
+
+      if (answer.length === 0) {
+        console.log("answer should be nonempty");
+        error = true;
+        return;
       }
+    });
+
+    if (error) {
+      return;
+    }
+
+    console.log(loggedDataEntryArr);
+
+    if (isLogged) {
+      createLoggedDataSetAPIMethod({
+        logged_data_arr: { ...loggedDataEntryArr },
+        date,
+      }).then((res) => console.log("Saving New LoggedDataSet Successful"));
     } else {
-      return loggedDataArr.map((data) => (
-        <LogDayForm data={data} date={date} />
-      ));
     }
   };
 
@@ -46,8 +106,16 @@ function PageLogDay() {
     <div className="pageContainer">
       <form>
         <DateSelect date={date} setDate={setDate} />
-        {render()}
-        <ButtonSave />
+        {loggedDataEntryArr.map((ld, i) => (
+          <LogDayForm
+            key={ld._id}
+            index={i}
+            question={ld.question}
+            answer={ld.answer}
+            editLoggedData={editLoggedData}
+          />
+        ))}
+        <ButtonSave onClick={saveLoggedDataArr} />
       </form>
     </div>
   );

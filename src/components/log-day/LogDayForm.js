@@ -1,63 +1,39 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import {
-  InputFieldLogDayNumber,
-  InputFieldLogDayBoolean,
-  InputFieldLogDayText,
-  InputFieldLogDayMultipleChoice,
-} from "../common/InputField";
+import { InputField } from "../common/InputField";
 
 function LogDayForm(props) {
-  const data = props.data;
-  const date = props.date;
+  //inherited props
+  const index = props.index;
+  const question = props.question;
+  const answer = props.answer;
+  const editLoggedData = props.editLoggedData;
 
-  const type = data.type;
-  const text = data.text;
-  const optionArr = data.optionArr;
+  //own props
+  const [formData, setFormData] = useState({
+    type_of_question: question.type_of_question,
+    text: question.text,
+    option: question.option || [],
+    answer,
+  });
 
-  const [logResponse, setLogResponse] = useState(data.logResponse || ""); //user answer to the question
-
-  const onChange = (e) => {
-    const className = e.target.className;
-    const newInput = e.target.value;
-
-    if (className === "logResponse") {
-      setLogResponse(newInput);
-    }
-  };
-
-  const render = () => {
-    switch (type) {
-      case "number":
-        return (
-          <InputFieldLogDayNumber value={logResponse} onChange={onChange} />
-        );
-
-      case "boolean":
-        return (
-          <InputFieldLogDayBoolean value={logResponse} onChange={onChange} />
-        );
-
-      case "text":
-        return <InputFieldLogDayText value={logResponse} onChange={onChange} />;
-
-      case "multiple":
-        return (
-          <InputFieldLogDayMultipleChoice
-            value={logResponse}
-            onChange={onChange}
-          />
-        );
-
-      default:
-        break;
-    }
+  const handleInputChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    const newFormData = { ...formData, [name]: value };
+    setFormData(newFormData);
+    editLoggedData(name, value, index);
   };
 
   return (
     <div className="formComponentItemsColumn">
-      {text}
-      {render()}
+      <label>{formData.text}</label>
+      <InputField
+        name={"answer"}
+        value={formData.answer}
+        onChange={handleInputChange}
+      />
     </div>
   );
 }
