@@ -15,10 +15,10 @@ import TopBar from "./components/common/TopBar";
 
 function AppRoutes() {
   const routes = useRoutes([
-    { path: "/logIn", element: <PageLogIn /> },
-    { path: "/logDay", element: <PageLogDay /> },
+    { path: "/login", element: <PageLogIn /> },
+    { path: "/logday", element: <PageLogDay /> },
     { path: "/edit", element: <PageEdit /> },
-    { path: "/viewData", element: <PageViewData /> },
+    { path: "/viewdata", element: <PageViewData /> },
     { path: "/profile", element: <PageProfile /> },
     { path: "/admin", element: <PageAdmin /> },
   ]);

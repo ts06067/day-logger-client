@@ -1,5 +1,34 @@
 import "./css/FormComponent.css";
 
+function InputField(props) {
+  const name = props.name;
+  const value = props.value;
+  const onChange = props.onChange;
+
+  return <input name={name} defaultValue={value} onChange={onChange} />;
+}
+
+function SelectOption(props) {
+  //inherited props
+  const name = props.name;
+  const value = props.value;
+  const onChange = props.onChange;
+
+  //own props
+  const options = ["number", "boolean", "text", "multiple"];
+  const renderedOptions = options.map((op) => (
+    <option key={Math.random()} value={op}>
+      {op}
+    </option>
+  ));
+
+  return (
+    <select name={name} value={value} onChange={onChange}>
+      {renderedOptions}
+    </select>
+  );
+}
+
 function InputFieldGeneral(props) {
   const type = props.type;
   return <input id={type} />;
@@ -37,6 +66,8 @@ function InputFieldQuestionMultipleChoice(props) {
 }
 
 export {
+  InputField,
+  SelectOption,
   InputFieldGeneral,
   InputFieldLogDayNumber,
   InputFieldLogDayBoolean,

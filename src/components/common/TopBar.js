@@ -10,7 +10,7 @@ function TopBar() {
         Day Logger
       </div>
       <div className="topBarItem" id="topBarNavigate">
-        <Link to={"/logDay"}>
+        <Link to={"/logday"}>
           <div className="topBarNavigateLink">
             <div className="topBarNavigateLinkText">Log Day</div>
           </div>
@@ -22,7 +22,7 @@ function TopBar() {
           </div>
         </Link>
 
-        <Link to={"/viewData"}>
+        <Link to={"/viewdata"}>
           <div className="topBarNavigateLink">
             <div className="topBarNavigateLinkText">View Data</div>
           </div>

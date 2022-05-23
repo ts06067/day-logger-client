@@ -1,57 +1,57 @@
 import "../common/css/Page.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import {
+  getQuestionSetAPIMethod,
+  createQuestionSetAPIMethod,
+} from "../../api/client";
 
 import { ButtonSave } from "../../components/common/Button";
 import { EditQuestionForm } from "../../components/edit-question/EditQuestionForm";
 import { EditQuestionTitle } from "../../components/edit-question/EditQuestionTitle";
 
 function PageEdit() {
-  const [questionArr, setQuestionArr] = useState([]);
+  const [questionSet, setQuestionSet] = useState({});
+  const [questionEntryArr, setQuestionEntryArr] = useState([]);
 
-  const addQuestion = () => {
-    //question preset
-    const newQuestion = {
-      _id: Math.random(),
-      type: "number",
-      text: "",
-      optionArr: [],
-    };
-    //append question
-    const newQuestionArr = [...questionArr, newQuestion];
-    setQuestionArr(newQuestionArr);
+  //retrieve preset on load
+  useEffect(() => {
+    getQuestionSetAPIMethod().then((qs) => {
+      setQuestionSet(qs);
+      setQuestionEntryArr(qs.question_arr);
+    });
+  }, []);
+
+  const addQuestion = () => {};
+
+  const deleteQuestion = (i) => {};
+
+  const editQuestion = (name, value, i) => {
+    let newQuestionEntryArr = questionEntryArr;
+    //find entry at index i
+    let newQuestionEntry = newQuestionEntryArr[i];
+    //change attr.
+    newQuestionEntry = { ...newQuestionEntry, [name]: value };
+    //reassign to a[i]
+    newQuestionEntryArr[i] = newQuestionEntry;
+    //update
+    setQuestionEntryArr(newQuestionEntryArr);
+
+    console.log(newQuestionEntryArr);
   };
 
-  const deleteQuestion = (_id) => {
-    const newQuestionArr = questionArr.filter(
-      (question) => question._id !== _id
-    );
-
-    setQuestionArr(newQuestionArr);
-  };
-
-  const editQuestion = (questionToEdit) => {
-    const newQuestion = questionArr.find(
-      (question) => question._id === questionToEdit._id
-    );
-
-    newQuestion.text = questionToEdit.text;
-    newQuestion.type = questionToEdit.type;
-    newQuestion.optionArr = questionToEdit.optionArr;
-  };
-
-  const saveQuestionArr = () => {
-    console.log(questionArr);
-  };
+  const saveQuestionArr = () => {};
 
   return (
     <div className="pageContainer">
       <form>
         <EditQuestionTitle addQuestion={addQuestion} />
-        {questionArr.map((question) => (
+        {questionEntryArr.map((q, i) => (
           <EditQuestionForm
-            key={question._id}
-            question={question}
+            key={q._id}
+            index={i}
+            question={q}
             deleteQuestion={deleteQuestion}
             editQuestion={editQuestion}
           />
