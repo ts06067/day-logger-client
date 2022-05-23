@@ -13,7 +13,7 @@ export const getQuestionSetAPIMethod = () => {
 };
 
 export const createQuestionSetAPIMethod = (qs) => {
-  return api.post("/api/questionsets", { ...qs }).then(checkStatus);
+  return api.post("/api/questionsets", qs).then(checkStatus);
 };
 
 export const loginAPIMethod = () => {

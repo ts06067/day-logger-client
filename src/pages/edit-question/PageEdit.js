@@ -37,11 +37,13 @@ function PageEdit() {
     newQuestionEntryArr[i] = newQuestionEntry;
     //update
     setQuestionEntryArr(newQuestionEntryArr);
-
-    console.log(newQuestionEntryArr);
   };
 
-  const saveQuestionArr = () => {};
+  const saveQuestionArr = () => {
+    createQuestionSetAPIMethod(questionEntryArr).then((res) =>
+      console.log(res)
+    );
+  };
 
   return (
     <div className="pageContainer">

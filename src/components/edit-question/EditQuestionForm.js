@@ -16,7 +16,7 @@ function EditQuestionForm(props) {
 
   //own props
   const [formData, setFormData] = useState({
-    type: question.type_of_question,
+    type_of_question: question.type_of_question,
     text: question.text,
   });
 
@@ -25,11 +25,7 @@ function EditQuestionForm(props) {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-
-    console.log("name: " + name + ", value: " + value);
-
     const newFormData = { ...formData, [name]: value };
-    console.log(newFormData);
     setFormData(newFormData);
     editQuestion(name, value, index);
   };
@@ -43,8 +39,8 @@ function EditQuestionForm(props) {
       />
       <div className="formComponentItemsRow">
         <SelectOption
-          name={"type"}
-          value={formData.type}
+          name={"type_of_question"}
+          value={formData.type_of_question}
           onChange={handleInputChange}
         />
         <ButtonDeleteQuestion
