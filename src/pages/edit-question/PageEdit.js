@@ -12,20 +12,29 @@ import { EditQuestionForm } from "../../components/edit-question/EditQuestionFor
 import { EditQuestionTitle } from "../../components/edit-question/EditQuestionTitle";
 
 function PageEdit() {
-  const [questionSet, setQuestionSet] = useState({});
   const [questionEntryArr, setQuestionEntryArr] = useState([]);
 
   //retrieve preset on load
   useEffect(() => {
     getQuestionSetAPIMethod().then((qs) => {
-      setQuestionSet(qs);
       setQuestionEntryArr(qs.question_arr);
     });
   }, []);
 
-  const addQuestion = () => {};
+  const addQuestion = () => {
+    const newQuestionEntry = {
+      _id: Math.random(), //random id for unsaved obj
+      type_of_question: "text",
+    };
+    const newQuestionEntryArr = [...questionEntryArr, newQuestionEntry];
+    console.log(newQuestionEntryArr);
+    setQuestionEntryArr(newQuestionEntryArr);
+  };
 
-  const deleteQuestion = (i) => {};
+  const deleteQuestion = (id) => {
+    const newQuestionEntryArr = questionEntryArr.filter((q) => q._id !== id);
+    setQuestionEntryArr(newQuestionEntryArr);
+  };
 
   const editQuestion = (name, value, i) => {
     let newQuestionEntryArr = questionEntryArr;
@@ -40,8 +49,31 @@ function PageEdit() {
   };
 
   const saveQuestionArr = () => {
+    //check if any empty or less
+    let error = false;
+
+    questionEntryArr.forEach((q) => {
+      //question entry
+      const type_of_question = q.type_of_question;
+      const text = q.text;
+      const option = q.option;
+
+      if (
+        text.length === 0 ||
+        (type_of_question === "multiple" && option.length === 0)
+      ) {
+        console.log("should be nonempty");
+        error = true;
+        return;
+      }
+    });
+
+    if (error) {
+      return;
+    }
+
     createQuestionSetAPIMethod(questionEntryArr).then((res) =>
-      console.log(res)
+      console.log("Saving New QuestionSet Successful")
     );
   };
 

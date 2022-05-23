@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { ButtonDeleteQuestion } from "../common/Button";
 import {
   InputField,
+  InputFieldGroup,
   SelectOption,
-  InputFieldQuestionMultipleChoice,
 } from "../common/InputField";
 
 function EditQuestionForm(props) {
@@ -18,6 +18,7 @@ function EditQuestionForm(props) {
   const [formData, setFormData] = useState({
     type_of_question: question.type_of_question,
     text: question.text,
+    option: question.option || [],
   });
 
   const handleInputChange = (e) => {
@@ -28,6 +29,20 @@ function EditQuestionForm(props) {
     const newFormData = { ...formData, [name]: value };
     setFormData(newFormData);
     editQuestion(name, value, index);
+  };
+
+  const handleInputGroupChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const i = parseInt(target.name);
+    const option = formData.option;
+
+    option[i] = value;
+
+    const newFormData = { ...formData, option };
+    setFormData(newFormData);
+    editQuestion("option", option, index);
+    console.log("new option: " + option);
   };
 
   return (
@@ -48,6 +63,16 @@ function EditQuestionForm(props) {
           idToDelete={question._id}
         />
       </div>
+      {formData.type_of_question === "multiple" && (
+        <div className="formComponentItemsColumn">
+          <InputFieldGroup
+            index={index}
+            name={"option"}
+            values={formData.option}
+            onChange={handleInputGroupChange}
+          />
+        </div>
+      )}
     </div>
   );
 }

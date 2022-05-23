@@ -1,13 +1,49 @@
-import "./css/FormComponent.css";
+import "../common/css/FormComponent.css";
 
+//general text input field
 function InputField(props) {
   const name = props.name;
   const value = props.value;
   const onChange = props.onChange;
 
-  return <input name={name} defaultValue={value} onChange={onChange} />;
+  return (
+    <input
+      name={name}
+      value={value}
+      onChange={onChange}
+      placeholder={"Enter Question..."}
+    />
+  );
 }
 
+function InputFieldGroup(props) {
+  //inherited props
+  const index = props.index;
+  const name = props.name;
+  let values = props.values; //option arr
+  const onChange = props.onChange;
+
+  values = [
+    values[0] || "",
+    values[1] || "",
+    values[2] || "",
+    ...values.splice(3),
+  ];
+
+  const renderedInputs = values.map((v, i) => (
+    <input
+      key={name && index && i}
+      name={i}
+      value={v}
+      onChange={onChange}
+      placeholder={"Enter Text..."}
+    />
+  ));
+
+  return <div className="formComponentItemsColumn">{renderedInputs}</div>;
+}
+
+//select type_of_question
 function SelectOption(props) {
   //inherited props
   const name = props.name;
@@ -67,6 +103,7 @@ function InputFieldQuestionMultipleChoice(props) {
 
 export {
   InputField,
+  InputFieldGroup,
   SelectOption,
   InputFieldGeneral,
   InputFieldLogDayNumber,
