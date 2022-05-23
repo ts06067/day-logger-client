@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-import { InputField } from "../common/InputField";
+import { parseUniqueName } from "../../utils/helper";
+
+import { InputFieldByType } from "../common/InputField";
 
 function LogDayForm(props) {
   //inherited props
@@ -21,7 +23,7 @@ function LogDayForm(props) {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    const newFormData = { ...formData, [name]: value };
+    const newFormData = { ...formData, [parseUniqueName(name)]: value };
     setFormData(newFormData);
     editLoggedData(name, value, index);
   };
@@ -29,9 +31,12 @@ function LogDayForm(props) {
   return (
     <div className="formComponentItemsColumn">
       <label>{formData.text}</label>
-      <InputField
+      <InputFieldByType
+        index={index}
+        type_of_question={formData.type_of_question}
         name={"answer"}
         value={formData.answer}
+        option={formData.option}
         onChange={handleInputChange}
       />
     </div>

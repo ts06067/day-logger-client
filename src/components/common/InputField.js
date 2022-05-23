@@ -18,9 +18,57 @@ function InputField(props) {
 
 //input field of var. types (number, boolean, text, multiple)
 function InputFieldByType(props) {
+  //inherited props
+  const index = props.index;
+  const type_of_question = props.type_of_question;
   const name = props.name;
   const value = props.value;
+  const option = props.option;
   const onChange = props.onChange;
+
+  //own props
+  const uniqueName = name + "-" + Math.random();
+
+  switch (type_of_question) {
+    case "number":
+      return (
+        <input type="number" name={name} value={value} onChange={onChange} />
+      );
+    case "boolean":
+      const booleanSet = ["true", "false"];
+      return booleanSet.map((b, i) => (
+        <label key={"lb" + name + index + i}>
+          <input
+            key={"b" + name + index + i}
+            type="radio"
+            checked={value === b}
+            name={uniqueName}
+            value={b}
+            onChange={onChange}
+          ></input>
+          {b}
+        </label>
+      ));
+    case "text":
+      return <InputField name={name} value={value} onChange={onChange} />;
+    case "multiple":
+      return option.map((op, i) => (
+        <label key={"lm" + name + index + i}>
+          <input
+            key={"m" + name + index + i}
+            type="radio"
+            checked={value === op}
+            name={uniqueName}
+            value={op}
+            onChange={onChange}
+          ></input>
+          {op}
+        </label>
+      ));
+
+    default:
+      break;
+  }
 }
 
 function InputFieldGroup(props) {
@@ -110,6 +158,7 @@ function InputFieldQuestionMultipleChoice(props) {
 
 export {
   InputField,
+  InputFieldByType,
   InputFieldGroup,
   SelectOption,
   InputFieldGeneral,

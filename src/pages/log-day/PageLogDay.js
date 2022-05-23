@@ -2,6 +2,8 @@ import "../common/css/Page.css";
 
 import { useEffect, useState } from "react";
 
+import { getOClock, parseUniqueName } from "../../utils/helper";
+
 import {
   getQuestionSetAPIMethod,
   getLoggedDataSetAPIMethod,
@@ -17,7 +19,7 @@ function PageLogDay() {
   const [isLogged, setIsLogged] = useState(false);
   const [questionEntryArr, setQuestionEntryArr] = useState([]);
   const [loggedDataEntryArr, setLoggedDataEntryArr] = useState([]);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(getOClock());
 
   //retrieve preset on load
   useEffect(() => {
@@ -47,7 +49,6 @@ function PageLogDay() {
             });
             setLoggedDataEntryArr(newLoggedDataEntryArr);
           });
-          console.log(newLoggedDataEntryArr);
           setIsLogged(false); //mark unlogged
         }
         return;
@@ -62,13 +63,14 @@ function PageLogDay() {
     //find entry at index i
     let newLoggedDataEntry = newLoggedDataEntryArr[i];
     //change attr.
-    newLoggedDataEntry = { ...newLoggedDataEntry, [name]: value };
+    newLoggedDataEntry = {
+      ...newLoggedDataEntry,
+      [parseUniqueName(name)]: value,
+    };
     //reassign to a[i]
     newLoggedDataEntryArr[i] = newLoggedDataEntry;
     //update
     setLoggedDataEntryArr(newLoggedDataEntryArr);
-
-    console.log(newLoggedDataEntryArr);
   };
 
   const saveLoggedDataArr = () => {
@@ -89,8 +91,6 @@ function PageLogDay() {
     if (error) {
       return;
     }
-
-    console.log(loggedDataEntryArr);
 
     if (isLogged) {
       updateLoggedDataSetAPIMethod(loggedDataEntryArr, date).then((res) =>

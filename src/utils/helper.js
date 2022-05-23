@@ -1,3 +1,19 @@
+export const parseUniqueName = function (name) {
+  const idx = name.indexOf("-");
+  if (idx === -1) {
+    return name;
+  }
+  return name.slice(0, name.indexOf("-"));
+};
+
+export const getOClock = function () {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const date = now.getDate();
+  return new Date(year, month, date);
+};
+
 export const parseDate = function (str) {
   //from YYYYMMDD
   const year = parseInt(str.substring(0, 4));
