@@ -16,6 +16,13 @@ function InputField(props) {
   );
 }
 
+//input field of var. types (number, boolean, text, multiple)
+function InputFieldByType(props) {
+  const name = props.name;
+  const value = props.value;
+  const onChange = props.onChange;
+}
+
 function InputFieldGroup(props) {
   //inherited props
   const index = props.index;

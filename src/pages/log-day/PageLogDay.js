@@ -6,9 +6,8 @@ import {
   getQuestionSetAPIMethod,
   getLoggedDataSetAPIMethod,
   createLoggedDataSetAPIMethod,
+  updateLoggedDataSetAPIMethod,
 } from "../../api/client";
-
-import { dateTo8DStr, onFalseError } from "../../utils/helper";
 
 import { ButtonSave } from "../../components/common/Button";
 import { LogDayForm } from "../../components/log-day/LogDayForm";
@@ -34,7 +33,7 @@ function PageLogDay() {
 
   useEffect(() => {
     //get lds
-    getLoggedDataSetAPIMethod(dateTo8DStr(date)).then((lds) => {
+    getLoggedDataSetAPIMethod(date).then((lds) => {
       if (!lds) {
         console.log("No LoggedDataSet");
 
@@ -94,11 +93,14 @@ function PageLogDay() {
     console.log(loggedDataEntryArr);
 
     if (isLogged) {
+      updateLoggedDataSetAPIMethod(loggedDataEntryArr, date).then((res) =>
+        console.log("Updating LoggedDataSet Successful")
+      );
+    } else {
       createLoggedDataSetAPIMethod({
         logged_data_arr: { ...loggedDataEntryArr },
         date,
       }).then((res) => console.log("Saving New LoggedDataSet Successful"));
-    } else {
     }
   };
 

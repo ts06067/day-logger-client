@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { dateTo8DStr } from "../utils/helper";
 
 //global
@@ -16,7 +17,7 @@ export const createQuestionSetAPIMethod = (qs) => {
 
 export const getLoggedDataSetAPIMethod = (date) => {
   const dateStr = dateTo8DStr(date);
-  return api.get(`/api/logsets/${date}`).then(fetchData);
+  return api.get(`/api/logsets/${dateStr}`).then(checkStatus).then(fetchData);
 };
 
 export const createLoggedDataSetAPIMethod = (lds) => {
@@ -25,8 +26,10 @@ export const createLoggedDataSetAPIMethod = (lds) => {
 
 export const updateLoggedDataSetAPIMethod = (lds, date) => {
   const dateStr = dateTo8DStr(date);
-
-  return api.put("/");
+  return api
+    .put(`/api/logsets/${dateStr}`, lds)
+    .then(checkStatus)
+    .then(fetchData);
 };
 
 export const loginAPIMethod = () => {
