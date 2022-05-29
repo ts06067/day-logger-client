@@ -1,37 +1,25 @@
-import "../common/css/FormComponent.css";
+import { useState } from "react";
 
-import { InputFieldGeneral } from "../common/InputField";
-
+import { InputField } from "../common/InputField";
 import { EditImageForm } from "./profile-image/EditImageForm";
 
 function EditProfileForm(props) {
-  const type = props.type;
-  const profile = props.profile;
+  //inherited props
+  const formData = props.formData;
+  const onChange = props.onChange;
 
-  if (type === "image") {
-    return <EditImageForm profile={profile} />;
-  }
+  //own props
+  const { imgUrl, name, email, address_1, address_2 } = formData;
 
-  const render = () => {
-    switch (type) {
-      case "name":
-        return <InputFieldGeneral type={"profile_" + type} />;
-      case "email":
-        return <InputFieldGeneral type={"profile_" + type} />;
-      case "address":
-        return (
-          <>
-            <InputFieldGeneral type={"profile_" + type + "_1"} />
-            <InputFieldGeneral type={"profile_" + type + "_2"} />
-          </>
-        );
-
-      default:
-        break;
-    }
-  };
-
-  return <div className="formComponentItemsColumn">{render()}</div>;
+  return (
+    <div className="formComponentItemsColumn">
+      <EditImageForm name={"imgUrl"} value={imgUrl} onChange={onChange} />
+      <InputField name={"name"} value={name} onChange={onChange} />
+      <InputField name={"email"} value={email} onChange={onChange} />
+      <InputField name={"address_1"} value={address_1} onChange={onChange} />
+      <InputField name={"address_2"} value={address_2} onChange={onChange} />
+    </div>
+  );
 }
 
 export default EditProfileForm;

@@ -32,11 +32,24 @@ export const updateLoggedDataSetAPIMethod = (lds, date) => {
     .then(fetchData);
 };
 
-export const loginAPIMethod = () => {
-  return api.post("/api/login", {
-    email: "ts06067@daum.net",
-    password: "123456",
-  });
+export const getUserAPIMethod = () => {
+  return api.get("/api/users").then(checkStatus).then(fetchData);
+};
+
+export const updateUserAPIMethod = (user) => {
+  return api.put("/api/users", user).then(checkStatus).then(fetchData);
+};
+
+export const registerAPIMethod = (user) => {
+  return api.post("/api/register", user).then(checkStatus).then(fetchData);
+};
+
+export const loginAPIMethod = (user) => {
+  return api.post("/api/login", user).then(checkStatus).then(fetchData);
+};
+
+export const logoutAPIMethod = () => {
+  return api.post("/api/logout", {});
 };
 
 function checkStatus(res) {

@@ -1,5 +1,7 @@
 import "./App.css";
 
+import { useState } from "react";
+
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 
 //pages
@@ -13,24 +15,35 @@ import PageAdmin from "./pages/intro/PageAdmin";
 //components
 import TopBar from "./components/common/TopBar";
 
-function AppRoutes() {
+function AppRoutes(props) {
+  const profile = props.profile;
+  const setProfile = props.setProfile;
+
   const routes = useRoutes([
-    { path: "/login", element: <PageLogIn /> },
+    {
+      path: "/login",
+      element: <PageLogIn setProfile={setProfile} />,
+    },
     { path: "/logday", element: <PageLogDay /> },
     { path: "/edit", element: <PageEdit /> },
     { path: "/viewdata", element: <PageViewData /> },
-    { path: "/profile", element: <PageProfile /> },
+    {
+      path: "/profile",
+      element: <PageProfile profile={profile} setProfile={setProfile} />,
+    },
     { path: "/admin", element: <PageAdmin /> },
   ]);
   return routes;
 }
 
 function App() {
+  const [profile, setProfile] = useState(null);
+
   return (
     <div className="App">
       <Router>
-        <TopBar />
-        <AppRoutes />
+        <TopBar profile={profile} />
+        <AppRoutes profile={profile} setProfile={setProfile} />
       </Router>
     </div>
   );

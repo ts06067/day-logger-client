@@ -1,27 +1,41 @@
 import "../common/css/Page.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import EditProfileForm from "../../components/profile/EditProfileForm";
+import { updateUserAPIMethod } from "../../api/client";
+
+import { ButtonSave } from "../../components/common/Button";
 import EditProfileTitle from "../../components/profile/EditProfileTitle";
-import SaveAndLogOut from "../../components/profile/SaveAndLogOut";
+import EditProfileForm from "../../components/profile/EditProfileForm";
 
-function PageProfile() {
-  const [profile, setProfile] = useState({
-    image: "www.naver.com",
-    name: "Yoki",
-    email: "2sdf",
-    address: "asdf",
-  });
+function PageProfile(props) {
+  //inherited props
+  const profile = props.profile;
+  const setProfile = props.setProfile;
+
+  //own props
+  const [formData, setFormData] = useState(profile);
+
+  const handleInputChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    const newFormData = { ...formData, [name]: value };
+    setFormData(newFormData);
+  };
+
+  const saveUser = () => {
+    updateUserAPIMethod(formData).then((res) => {
+      console.log("Update User Success");
+      setProfile(formData);
+    });
+  };
 
   return (
-    <div>
+    <div className="formComponentItemsColumn">
       <EditProfileTitle />
-      <EditProfileForm type={"image"} data={profile} />
-      <EditProfileForm type={"name"} data={profile} />
-      <EditProfileForm type={"email"} data={profile} />
-      <EditProfileForm type={"address"} data={profile} />
-      <SaveAndLogOut />
+      <EditProfileForm formData={formData} onChange={handleInputChange} />
+      <ButtonSave onClick={saveUser} />
     </div>
   );
 }

@@ -1,9 +1,20 @@
+import { useState, useEffect } from "react";
+
 import { ButtonPrevDate, ButtonNextDate } from "../common/Button";
 
 function DateSelect(props) {
+  //inherited props
   const date = props.date;
   const setDate = props.setDate;
   const dayToMS = 60 * 60 * 24 * 1000;
+
+  //own props
+  const [displayNextButton, setDisplayNextButton] = useState(true);
+
+  useEffect(() => {
+    const isToday = new Date() - date < dayToMS;
+    setDisplayNextButton(!isToday);
+  }, [date]);
 
   const setPrevDate = (e) => {
     e.preventDefault();
@@ -26,7 +37,7 @@ function DateSelect(props) {
     <div className="formDateSelect">
       <ButtonPrevDate onClick={setPrevDate} />
       <div id="lbDate">{date.toISOString()}</div>
-      <ButtonNextDate onClick={setNextDate} />
+      {displayNextButton && <ButtonNextDate onClick={setNextDate} />}
     </div>
   );
 }

@@ -11,7 +11,7 @@ function InputField(props) {
       name={name}
       value={value}
       onChange={onChange}
-      placeholder={"Enter Question..."}
+      placeholder={"Enter..."}
     />
   );
 }
