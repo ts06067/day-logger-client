@@ -2,7 +2,7 @@ import "./App.css";
 
 import { useState } from "react";
 
-import { BrowserRouter as Router, useRoutes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, useRoutes } from "react-router-dom";
 
 //pages
 import PageLogDay from "./pages/log-day/PageLogDay";
@@ -16,20 +16,24 @@ import PageAdmin from "./pages/intro/PageAdmin";
 import TopBar from "./components/common/TopBar";
 
 function AppRoutes(props) {
-  const profile = props.profile;
-  const setProfile = props.setProfile;
+  const isLoggedIn = props.isLoggedIn;
+  const setIsLoggedIn = props.setIsLoggedIn;
 
   const routes = useRoutes([
     {
+      path: "/",
+      element: <Navigate to="/login" />,
+    },
+    {
       path: "/login",
-      element: <PageLogIn setProfile={setProfile} />,
+      element: <PageLogIn setIsLoggedIn={setIsLoggedIn} />,
     },
     { path: "/logday", element: <PageLogDay /> },
     { path: "/edit", element: <PageEdit /> },
     { path: "/viewdata", element: <PageViewData /> },
     {
       path: "/profile",
-      element: <PageProfile profile={profile} setProfile={setProfile} />,
+      element: <PageProfile />,
     },
     { path: "/admin", element: <PageAdmin /> },
   ]);
@@ -37,13 +41,15 @@ function AppRoutes(props) {
 }
 
 function App() {
-  const [profile, setProfile] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    sessionStorage.getItem("isLoggedIn")
+  );
 
   return (
     <div className="App">
       <Router>
-        <TopBar profile={profile} />
-        <AppRoutes profile={profile} setProfile={setProfile} />
+        <TopBar isLoggedIn={isLoggedIn} />
+        <AppRoutes isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       </Router>
     </div>
   );

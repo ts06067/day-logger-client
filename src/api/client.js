@@ -52,6 +52,15 @@ export const logoutAPIMethod = () => {
   return api.post("/api/logout", {});
 };
 
+export const uploadImageToCloudinaryAPIMethod = (formData) => {
+  const cloudName = "dwp6hrsi5";
+
+  return axios
+    .post(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, formData)
+    .then(checkStatus)
+    .then(fetchData);
+};
+
 function checkStatus(res) {
   if (res.status >= 200 && res.status < 300) {
     return res;

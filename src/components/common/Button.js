@@ -21,12 +21,13 @@ function ButtonLogOut() {
   return <button className="btnLogout">logout</button>;
 }
 
-function ButtonChooseNewImage() {
-  return <button className="btnChooseNewImage">Choose New Image</button>;
-}
-
-function ButtonRemoveImage() {
-  return <button className="btnRemoveImage">Remove Image</button>;
+function ButtonRemoveImage(props) {
+  const onClick = props.onClick;
+  return (
+    <button className="btnRemoveImage" onClick={onClick}>
+      Remove Image
+    </button>
+  );
 }
 
 function ButtonPrevDate(props) {
@@ -77,7 +78,6 @@ export {
   ButtonSubmit,
   ButtonSave,
   ButtonLogOut,
-  ButtonChooseNewImage,
   ButtonRemoveImage,
   ButtonPrevDate,
   ButtonNextDate,

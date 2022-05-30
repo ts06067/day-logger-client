@@ -1,9 +1,15 @@
 import "./css/ProfileBox.css";
 
+import defaultImage from "../../assets/default.png";
+
 import { Link } from "react-router-dom";
 
-function ProfileBox() {
-  return <img className="profileBox" alt="someUrl" src="someUrl" />;
+function ProfileBox(props) {
+  const value = props.value;
+
+  return (
+    <img className="profileBox" alt="someUrl" src={value || defaultImage} />
+  );
 }
 
 function ProfileBoxClickable() {

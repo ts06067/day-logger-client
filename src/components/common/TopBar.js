@@ -1,12 +1,17 @@
 import "./css/TopBar.css";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ProfileBoxClickable } from "./ProfileBox";
 
 function TopBar(props) {
-  const profile = props.profile;
+  //inherited props
+  const isLoggedIn = props.isLoggedIn;
+
+  //own props
+  const location = useLocation();
+
   return (
-    profile && (
+    (isLoggedIn || location !== "/") && (
       <div id="topBarContainer">
         <div className="topBarItem" id="topBarLogo">
           Day Logger

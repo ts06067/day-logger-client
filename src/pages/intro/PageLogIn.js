@@ -10,7 +10,7 @@ import { ButtonSave } from "../../components/common/Button";
 
 function PageLogIn(props) {
   //inherited props
-  const setProfile = props.setProfile;
+  const setIsLoggedIn = props.setIsLoggedIn;
 
   //own props
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -21,11 +21,9 @@ function PageLogIn(props) {
     console.log(formData);
     loginAPIMethod(formData).then((res) => {
       console.log("Login success");
-      getUserAPIMethod().then((res) => {
-        console.log("Getting User Info: ");
-        console.log(res);
-        setProfile(res);
-      });
+      //set logged in state
+      setIsLoggedIn(true);
+      sessionStorage.setItem("isLoggedIn", true);
       navigate("/logday");
     });
   };

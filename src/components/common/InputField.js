@@ -16,6 +16,25 @@ function InputField(props) {
   );
 }
 
+function InputFieldImage(props) {
+  const name = props.name;
+  const onChange = props.onChange;
+
+  return (
+    <>
+      <input
+        name={name}
+        onChange={onChange}
+        id="inputImg"
+        type="file"
+        accept="image/*"
+        style={{ display: "none" }}
+      />
+      <label htmlFor="inputImg">Choose New Image</label>
+    </>
+  );
+}
+
 //input field of var. types (number, boolean, text, multiple)
 function InputFieldByType(props) {
   //inherited props
@@ -158,6 +177,7 @@ function InputFieldQuestionMultipleChoice(props) {
 
 export {
   InputField,
+  InputFieldImage,
   InputFieldByType,
   InputFieldGroup,
   SelectOption,
