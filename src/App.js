@@ -18,6 +18,8 @@ import TopBar from "./components/common/TopBar";
 function AppRoutes(props) {
   const isLoggedIn = props.isLoggedIn;
   const setIsLoggedIn = props.setIsLoggedIn;
+  const profile = props.profile;
+  const setProfile = props.setProfile;
 
   const routes = useRoutes([
     {
@@ -33,7 +35,7 @@ function AppRoutes(props) {
     { path: "/viewdata", element: <PageViewData /> },
     {
       path: "/profile",
-      element: <PageProfile />,
+      element: <PageProfile profile={profile} setProfile={setProfile} />,
     },
     { path: "/admin", element: <PageAdmin /> },
   ]);
@@ -41,6 +43,8 @@ function AppRoutes(props) {
 }
 
 function App() {
+  const [profile, setProfile] = useState(null);
+
   const [isLoggedIn, setIsLoggedIn] = useState(
     sessionStorage.getItem("isLoggedIn")
   );
@@ -48,8 +52,13 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <TopBar isLoggedIn={isLoggedIn} />
-        <AppRoutes isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <TopBar isLoggedIn={isLoggedIn} profile={profile} />
+        <AppRoutes
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          profile={profile}
+          setProfile={setProfile}
+        />
       </Router>
     </div>
   );

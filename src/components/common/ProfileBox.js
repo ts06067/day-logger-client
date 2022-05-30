@@ -12,10 +12,12 @@ function ProfileBox(props) {
   );
 }
 
-function ProfileBoxClickable() {
+function ProfileBoxClickable(props) {
+  const value = props.value;
+
   return (
-    <Link className="profileBox" to={"/profile"}>
-      <img alt="someUrl" src="someUrl" />
+    <Link to={"/profile"}>
+      <img className="profileBox" alt="someUrl" src={value || defaultImage} />
     </Link>
   );
 }

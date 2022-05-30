@@ -13,7 +13,11 @@ import EditProfileTitle from "../../components/profile/EditProfileTitle";
 import EditProfileForm from "../../components/profile/EditProfileForm";
 
 function PageProfile(props) {
-  const [profile, setProfile] = useState(null);
+  //inherited props
+  const profile = props.profile;
+  const setProfile = props.setProfile;
+
+  //own props
   const [formData, setFormData] = useState({
     name: "",
     email: "",

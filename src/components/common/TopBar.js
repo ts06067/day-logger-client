@@ -6,12 +6,14 @@ import { ProfileBoxClickable } from "./ProfileBox";
 function TopBar(props) {
   //inherited props
   const isLoggedIn = props.isLoggedIn;
+  const profile = props.profile;
 
   //own props
   const location = useLocation();
+  const imgUrl = profile && profile.imgUrl;
 
   return (
-    (isLoggedIn || location !== "/") && (
+    isLoggedIn && (
       <div id="topBarContainer">
         <div className="topBarItem" id="topBarLogo">
           Day Logger
@@ -38,7 +40,7 @@ function TopBar(props) {
 
         <div className="topBarItem">
           <div id="topBarProfile">
-            <ProfileBoxClickable />
+            <ProfileBoxClickable value={imgUrl} />
           </div>
         </div>
       </div>
