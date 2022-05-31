@@ -9,11 +9,11 @@ function DateSelect(props) {
   const dayToMS = 60 * 60 * 24 * 1000;
 
   //own props
-  const [displayNextButton, setDisplayNextButton] = useState(true);
+  const [disable, setDisable] = useState(true);
 
   useEffect(() => {
     const isToday = new Date() - date < dayToMS;
-    setDisplayNextButton(!isToday);
+    setDisable(isToday);
   }, [date]);
 
   const setPrevDate = (e) => {
@@ -37,7 +37,7 @@ function DateSelect(props) {
     <div className="formDateSelect">
       <ButtonPrevDate onClick={setPrevDate} />
       <div id="lbDate">{date.toISOString()}</div>
-      {displayNextButton && <ButtonNextDate onClick={setNextDate} />}
+      <ButtonNextDate disable={disable} onClick={setNextDate} />
     </div>
   );
 }

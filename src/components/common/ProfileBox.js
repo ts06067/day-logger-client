@@ -16,7 +16,7 @@ function ProfileBoxClickable(props) {
   const value = props.value;
 
   return (
-    <Link to={"/profile"}>
+    <Link style={{ margin: "auto" }} to={"/profile"}>
       <img className="profileBox" alt="someUrl" src={value || defaultImage} />
     </Link>
   );

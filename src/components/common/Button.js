@@ -39,8 +39,10 @@ function ButtonPrevDate(props) {
 }
 
 function ButtonNextDate(props) {
+  const disable = props.disable;
+
   return (
-    <button onClick={props.onClick} className="btnNextDate">
+    <button disabled={disable} onClick={props.onClick} className="btnNextDate">
       next
     </button>
   );
