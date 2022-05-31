@@ -15,6 +15,10 @@ export const createQuestionSetAPIMethod = (qs) => {
   return api.post("/api/questionsets", qs).then(checkStatus).then(checkStatus);
 };
 
+export const getAllLoggedDataSetAPIMethod = () => {
+  return api.get("/api/logsets").then(checkStatus).then(fetchData);
+};
+
 export const getLoggedDataSetAPIMethod = (date) => {
   const dateStr = dateTo8DStr(date);
   return api.get(`/api/logsets/${dateStr}`).then(checkStatus).then(fetchData);

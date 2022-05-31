@@ -31,6 +31,15 @@ export const dateTo8DStr = function (d) {
   return "" + year + month + date;
 };
 
+export const dateTo8DStrHyphen = function (d) {
+  //to YYYY-MM-DD
+  const year = d.getFullYear();
+  let month = d.getMonth() + 1;
+  month = month < 10 ? "0" + month : month;
+  const date = d.getDate();
+  return "" + year + "-" + month + "-" + date;
+};
+
 export const onFalseError = function (e, msg) {
   if (!e) {
     throw Error("msg");
