@@ -7,6 +7,14 @@ const api = axios.create({
   withCredentials: true,
 });
 
+export const getStatAPIMethod = () => {
+  return api.get("/api/stat").then(checkStatus).then(fetchData);
+};
+
+export const deleteUserAPIMethod = (id) => {
+  return api.delete(`/api/users/${id}`).then(checkStatus).then(fetchData);
+};
+
 export const getQuestionSetAPIMethod = () => {
   return api.get("/api/questionsets").then(checkStatus).then(fetchData);
 };
