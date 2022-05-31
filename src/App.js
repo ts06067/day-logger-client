@@ -10,7 +10,7 @@ import PageEdit from "./pages/edit-question/PageEdit";
 import PageViewData from "./pages/view-data/PageViewData";
 import PageLogIn from "./pages/intro/PageLogIn";
 import PageProfile from "./pages/profile/PageProfile";
-import PageAdmin from "./pages/intro/PageAdmin";
+import PageAdmin from "./pages/admin/PageAdmin";
 
 //components
 import TopBar from "./components/common/TopBar";
