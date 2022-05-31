@@ -43,13 +43,13 @@ function DataBoolean(props) {
       <h3>{text}</h3>
       <div className="area-chart-wrapper">
         <BarChart
-          width={800}
-          height={800}
+          width={600}
+          height={500}
           data={makeTally(answers)}
           margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
           layout="vertical"
         >
-          <XAxis type="number" />
+          <XAxis height={70} type="number" label={text} />
           <YAxis dataKey="answer" type="category" />
           <Tooltip />
           <Bar dataKey="count" fill="#387908">

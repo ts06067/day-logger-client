@@ -31,7 +31,8 @@ function DataNumber(props) {
   const question = loggedData.question;
   const text = question.text;
   const type_of_question = question.type_of_question;
-  const answers = loggedData.answers;
+  const answers = loggedData.answers.sort((a, b) => (a.date > b.date ? 1 : -1));
+  const formattedAnswers = formatData(answers);
 
   return (
     <div className="formComponentItemsColumn">
@@ -39,13 +40,13 @@ function DataNumber(props) {
       <div className="line-chart-wrapper">
         <LineChart
           width={600}
-          height={400}
-          data={formatData(answers)}
+          height={500}
+          data={formattedAnswers}
           margin={{ top: 40, right: 40, bottom: 20, left: 20 }}
         >
           <CartesianGrid vertical={false} />
-          <XAxis dataKey="date" label="Date" />
-          <YAxis domain={["auto", "auto"]} label="Number" />
+          <XAxis height={70} dataKey="date" label={text} />
+          <YAxis domain={["auto", "auto"]} />
           <Tooltip
             wrapperStyle={{
               borderColor: "white",
@@ -55,6 +56,21 @@ function DataNumber(props) {
             labelStyle={{ fontWeight: "bold", color: "#666666" }}
           />
           <Line dataKey="answer" stroke="#ff7300" dot={false} />
+          <Brush
+            dataKey="date"
+            startIndex={Math.floor(formattedAnswers.length / 2)}
+          >
+            <AreaChart>
+              <CartesianGrid />
+              <YAxis hide domain={["auto", "auto"]} />
+              <Area
+                dataKey="price"
+                stroke="#ff7300"
+                fill="#ff7300"
+                dot={false}
+              />
+            </AreaChart>
+          </Brush>
         </LineChart>
       </div>
     </div>
