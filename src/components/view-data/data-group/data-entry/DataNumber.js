@@ -64,7 +64,7 @@ function DataNumber(props) {
               <CartesianGrid />
               <YAxis hide domain={["auto", "auto"]} />
               <Area
-                dataKey="price"
+                dataKey="answer"
                 stroke="#ff7300"
                 fill="#ff7300"
                 dot={false}
