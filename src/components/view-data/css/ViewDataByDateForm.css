@@ -1,0 +1,11 @@
+.tileLogged {
+  background-color: var(--activeColor);
+}
+
+.tileLoggedToday {
+  background-color: var(--actionBackgroundColor);
+}
+
+div.react-calendar {
+  border-radius: var(--formRadius);
+}

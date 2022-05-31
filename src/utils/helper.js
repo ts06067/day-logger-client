@@ -6,6 +6,14 @@ export const parseUniqueName = function (name) {
   return name.slice(0, name.indexOf("-"));
 };
 
+export const isSameDay = function (a, b) {
+  // b > a
+  const dateA = a.getDate();
+  const dateB = b.getDate();
+  const dayToMS = 60 * 60 * 24 * 1000;
+  return dateA === dateB && (b - a < dayToMS || a - b < dayToMS);
+};
+
 export const getOClock = function () {
   const now = new Date();
   const year = now.getFullYear();

@@ -20,7 +20,7 @@ function PageViewData() {
         console.log("No LoggedDataSet");
         return;
       }
-      setLoggedDataSetArr(ldss);
+      setLoggedDataSetArr(ldss.sort((a, b) => (a.date < b.date ? 1 : -1)));
     });
   }, []);
 
