@@ -28,8 +28,11 @@ function PageEdit() {
 
   const addQuestion = () => {
     const newQuestionEntry = {
+      //default preset: text type question
       _id: Math.random(), //random id for unsaved obj
       type_of_question: "text",
+      text: "",
+      option: [],
     };
     const newQuestionEntryArr = [...questionEntryArr, newQuestionEntry];
     console.log(newQuestionEntryArr);
