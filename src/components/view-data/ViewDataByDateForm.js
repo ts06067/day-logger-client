@@ -66,12 +66,13 @@ function ViewDataByDateForm(props) {
   };
 
   const render = (ld) => {
+    const id = ld._id;
     const question = ld.question;
     const text = question.text;
     const answer = ld.answer;
 
     return (
-      <div className="formComponentItemsColumn">
+      <div key={id} className="formComponentItemsColumn">
         <h3>{text}</h3>
         <p>{answer}</p>
       </div>
