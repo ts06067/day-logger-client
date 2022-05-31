@@ -41,8 +41,16 @@ function PageProfile(props) {
     }
 
     const { name, email, imgUrl, address } = profile;
-    const { address_1, address_2 } = address;
+
+    let address_1 = "",
+      address_2 = "";
+    if (address !== undefined) {
+      address_1 = address.address_1;
+      address_2 = address.address_2;
+    }
+
     const newFormData = { name, email, imgUrl, address_1, address_2 };
+
     setFormData(newFormData);
   }, [profile]);
 
