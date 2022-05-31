@@ -8,10 +8,14 @@ export const parseUniqueName = function (name) {
 
 export const isSameDay = function (a, b) {
   // b > a
+  const yearA = a.getFullYear();
+  const yearB = b.getFullYear();
+  const monthA = a.getMonth();
+  const monthB = b.getMonth();
   const dateA = a.getDate();
   const dateB = b.getDate();
-  const dayToMS = 60 * 60 * 24 * 1000;
-  return dateA === dateB && (b - a < dayToMS || a - b < dayToMS);
+
+  return yearA === yearB && monthA === monthB && dateA === dateB;
 };
 
 export const getOClock = function () {
