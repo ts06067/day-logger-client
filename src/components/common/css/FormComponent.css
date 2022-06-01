@@ -6,10 +6,17 @@
 
 .formComponentItemsRow {
   margin: 10px auto 10px auto;
-  width: var(--defaultComponentWidth);
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.formComponentItemsRowFromLeft {
+  margin: 10px auto 10px auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .formComponentItemsRowSmall {
@@ -19,12 +26,82 @@
   justify-content: space-between;
 }
 
+.formContainer {
+  width: var(--defaultComponentWidth);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  justify-content: center;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.spaceAround {
+  justify-content: space-around;
+}
+
+.padded {
+  padding: 10px;
+}
+
+.rounded {
+  border-radius: var(--formRadius);
+}
+
+.alignCenter {
+  align-items: center;
+}
+
+.alignEnd {
+  align-items: flex-end;
+}
+
+.white {
+  background-color: var(--standardBackgroundColor);
+}
+
+.formComponent {
+  width: 100%;
+  margin-bottom: 20px;
+  -webkit-transition: all 0.3s;
+}
+
+div.formContainer > div.formComponent:hover {
+  box-shadow: 0 5px 5px gray;
+}
+
+.narrowed {
+  width: 200px;
+}
+
+.marginTop {
+  margin-top: 10px;
+}
+
+.noMarginBottom {
+  margin-bottom: 0px;
+}
+
 .formComponentItemsColumn {
-  margin: 10px auto 10px auto;
+  background-color: var(--standardBackgroundColor);
+  margin: 10px 0 10px 0;
+  padding: 10px;
   width: var(--defaultComponentWidth);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-content: space-around;
 }
 
 .formComponentItemsColumnLeft {
@@ -47,8 +124,10 @@
   width: var(--defaultComponentWidth);
 }
 
-.formEditTitle {
-  margin: 10px auto 10px auto;
+.formTitle {
+  font-size: x-large;
+  font-weight: bold;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

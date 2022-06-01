@@ -1,10 +1,10 @@
 #topBarContainer {
-  width: 100%;
-  background-color: var(--lightColor);
+  background-color: var(--standardBackgroundColor);
   height: var(--defaultComponentHeight);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 0 20px 0 20px;
 }
 
 .topBarItem {
@@ -42,22 +42,30 @@
   font-size: large;
   display: flex;
   align-items: center;
+  -webkit-transition: all 0.3s;
 }
 
 .topBarNavigateLink:hover {
-  color: var(--actionTextColor);
+  color: var(--moderateColor);
 }
 
-.topBarNavigateLink:visited {
-  color: var(--actionTextColor);
+a {
+  text-decoration: none;
 }
 
-.topBarNavigateLink:active {
+a:visited {
+  color: var(--standardTextColor);
+}
+
+.active {
   color: var(--activeColor);
+  font-weight: bolder;
 }
 
-.topBarNavigateLinkText {
-  margin: auto;
+.active:hover {
+  cursor: default;
+  color: var(--activeColor);
+  text-shadow: 0 2px 5px gray;
 }
 
 @media screen and (max-width: 600px) {

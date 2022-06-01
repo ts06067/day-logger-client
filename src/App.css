@@ -13,7 +13,35 @@
   --defaultComponentWidth: 600px;
   --smallerComponentWidth: 300px;
   --formRadius: 10px;
-  --buttonRadius: 20px;
+  --buttonRadius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v126/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format("woff2");
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -33,6 +61,30 @@ select {
   border-color: var(--moderateColor);
 }
 
+input,
+button,
+label[for="inputImg"] {
+  -webkit-transition: all 0.3s;
+}
+
+input:hover {
+  border: 3px solid var(--actionBackgroundColor);
+}
+
+input {
+  height: 30px;
+  border: 1.5px solid var(--lightColor);
+  border-radius: 5px;
+}
+
+li > input {
+  border-radius: 0;
+}
+
+input[type="number"] {
+  width: 100px;
+}
+
 input[type="text"] {
   border-color: var(--lightColor);
 }
@@ -43,6 +95,28 @@ input[type="radio"] {
 
 input[type="submit"]:hover,
 input[type="button"]:hover,
+label[for="inputImg"]:hover,
 button:hover {
   transform: scale(1.1);
+  cursor: pointer;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
 }

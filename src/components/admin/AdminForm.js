@@ -1,4 +1,4 @@
-import { ButtonDeleteQuestion } from "../common/Button";
+import { ButtonDelete } from "../common/Button";
 
 function AdminForm(props) {
   //inherited props
@@ -10,12 +10,14 @@ function AdminForm(props) {
   const { _id, name, email } = user;
 
   return (
-    <div className="formComponentItemsColumn">
-      <h3>{name}</h3>
-      <h5>{email}</h5>
-      <p>Number of Questions: {numQuestionEntries}</p>
-      <p>Number of Responses: {numLoggedDataEntries}</p>
-      <ButtonDeleteQuestion onClick={deleteUser} idToDelete={_id} />
+    <div className="formContainer column padded rounded white marginTop">
+      <div className="row spaceBetween marginTop">
+        <h1>{name}</h1>
+        <ButtonDelete onClick={deleteUser} idToDelete={_id} />
+      </div>
+      <span className="marginTop">Email: {email}</span>
+      <span>Number of Questions: {numQuestionEntries}</span>
+      <span>Number of Responses: {numLoggedDataEntries}</span>
     </div>
   );
 }

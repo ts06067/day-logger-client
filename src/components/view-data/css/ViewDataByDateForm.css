@@ -7,5 +7,10 @@
 }
 
 div.react-calendar {
+  padding: 10px;
+  border-radius: var(--formRadius);
+}
+
+button.react-calendar__tile {
   border-radius: var(--formRadius);
 }

@@ -35,7 +35,13 @@ function AppRoutes(props) {
     { path: "/viewdata", element: <PageViewData /> },
     {
       path: "/profile",
-      element: <PageProfile profile={profile} setProfile={setProfile} />,
+      element: (
+        <PageProfile
+          profile={profile}
+          setProfile={setProfile}
+          setIsLoggedIn={setIsLoggedIn}
+        />
+      ),
     },
     { path: "/admin", element: <PageAdmin /> },
   ]);

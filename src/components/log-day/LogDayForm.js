@@ -29,8 +29,8 @@ function LogDayForm(props) {
   };
 
   return (
-    <div className="formComponentItemsColumn">
-      <label>{formData.text}</label>
+    <div className="formComponent column padded rounded white">
+      <span>{formData.text}</span>
       <InputFieldByType
         index={index}
         type_of_question={formData.type_of_question}

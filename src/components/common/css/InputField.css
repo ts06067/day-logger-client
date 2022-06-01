@@ -1,0 +1,29 @@
+input {
+  margin-top: 5px;
+}
+
+.inpMultiple {
+  border: none;
+  border-bottom: 2px solid var(--lightColor);
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: var(--lightColor);
+  border: 1.5px solid var(--moderateColor);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+label[for="inputImg"] {
+  background-color: var(--activeColor);
+  padding: 10px;
+  border-radius: var(--buttonRadius);
+}
+
+label[for="inputImg"]:hover {
+  background-color: var(--actionBackgroundColor);
+  color: var(--actionTextColor);
+  box-shadow: 0 5px 5px gray;
+}

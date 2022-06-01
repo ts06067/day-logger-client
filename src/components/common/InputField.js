@@ -1,4 +1,5 @@
 import "../common/css/FormComponent.css";
+import "./css/InputField.css";
 
 //general text input field
 function InputField(props) {
@@ -105,16 +106,25 @@ function InputFieldGroup(props) {
   ];
 
   const renderedInputs = values.map((v, i) => (
-    <input
-      key={name && index && i}
-      name={i}
-      value={v}
-      onChange={onChange}
-      placeholder={"Enter Text..."}
-    />
+    <ul key={name && index && i} className="row">
+      <li>
+        <span className="dot"></span>
+        <input
+          className="inpMultiple"
+          name={i}
+          value={v}
+          onChange={onChange}
+          placeholder={"Enter Text..."}
+        />
+      </li>
+    </ul>
   ));
 
-  return <div className="formComponentItemsColumn">{renderedInputs}</div>;
+  return (
+    <div className="formComponent column narrowed noMarginBottom">
+      {renderedInputs}
+    </div>
+  );
 }
 
 //select type_of_question

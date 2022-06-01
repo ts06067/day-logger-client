@@ -8,7 +8,11 @@ function ProfileBox(props) {
   const value = props.value;
 
   return (
-    <img className="profileBox" alt="someUrl" src={value || defaultImage} />
+    <img
+      className="profileBoxSample"
+      alt="someUrl"
+      src={value || defaultImage}
+    />
   );
 }
 

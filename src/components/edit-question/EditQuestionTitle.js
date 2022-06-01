@@ -1,12 +1,14 @@
-import { ButtonAddQuestion } from "../common/Button";
+import { ButtonAdd } from "../common/Button";
+
+import "../common/css/FormComponent.css";
 
 function EditQuestionTitle(props) {
   const addQuestion = props.addQuestion;
 
   return (
-    <div className="formEditTitle">
+    <div className="formTitle">
       <div>Edit Questions</div>
-      <ButtonAddQuestion onClick={addQuestion} />
+      <ButtonAdd onClick={addQuestion} />
     </div>
   );
 }

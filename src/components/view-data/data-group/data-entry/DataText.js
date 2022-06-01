@@ -1,3 +1,5 @@
+import { dateTo8DStrHyphen } from "../../../../utils/helper";
+
 function DataText(props) {
   //inherited props
   const loggedData = props.loggedData;
@@ -9,10 +11,12 @@ function DataText(props) {
   const answers = loggedData.answers;
 
   return (
-    <div className="formComponentItemsColumn">
+    <div className="column">
       <h3>{text}</h3>
       {answers.map((a) => (
-        <p key={a._id}>{a.date + "/" + a.answer}</p>
+        <span key={a._id}>
+          {dateTo8DStrHyphen(new Date(a.date)) + ": " + a.answer}
+        </span>
       ))}
     </div>
   );

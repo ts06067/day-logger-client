@@ -9,6 +9,7 @@ import ViewDataByQuestionForm from "../../components/view-data/ViewDataByQuestio
 import ViewDataByDateForm from "../../components/view-data/ViewDataByDateForm";
 
 function PageViewData() {
+  const [toggleViewData, setToggleViewData] = useState(false);
   const [loggedDataSetArr, setLoggedDataSetArr] = useState([]); //grouped by date
   const [loggedDataByQuestionArr, setLoggedDataByQuestionArr] = useState([]); //grouped by question
 
@@ -74,11 +75,20 @@ function PageViewData() {
 
   return (
     <div className="pageContainer">
-      <ViewDataTitle />
-      <ViewDataByQuestionForm
-        loggedDataByQuestionArr={loggedDataByQuestionArr}
-      />
-      <ViewDataByDateForm loggedDataSetArr={loggedDataSetArr} />
+      <div className="formContainer column">
+        <ViewDataTitle
+          toggleViewData={toggleViewData}
+          setToggleViewData={setToggleViewData}
+        />
+        {toggleViewData && (
+          <ViewDataByQuestionForm
+            loggedDataByQuestionArr={loggedDataByQuestionArr}
+          />
+        )}
+        {!toggleViewData && (
+          <ViewDataByDateForm loggedDataSetArr={loggedDataSetArr} />
+        )}
+      </div>
     </div>
   );
 }

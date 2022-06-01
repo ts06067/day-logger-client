@@ -105,9 +105,10 @@ function PageLogDay() {
   };
 
   return (
-    <div className="pageContainer">
-      <form>
+    <form className="pageContainer">
+      <div className="formContainer column">
         <DateSelect date={date} setDate={setDate} />
+        <div className="marginTop" />
         {loggedDataEntryArr.map((ld, i) => (
           <LogDayForm
             key={ld._id}
@@ -117,9 +118,11 @@ function PageLogDay() {
             editLoggedData={editLoggedData}
           />
         ))}
-        <ButtonSave onClick={saveLoggedDataArr} />
-      </form>
-    </div>
+        <div className="formContainer row">
+          <ButtonSave onClick={saveLoggedDataArr} />
+        </div>
+      </div>
+    </form>
   );
 }
 

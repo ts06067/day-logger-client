@@ -1,4 +1,5 @@
 import "../common/css/Page.css";
+import "./css/PageLogin.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +11,7 @@ import {
 } from "../../api/client";
 
 import LogInForm from "../../components/intro/LogInForm";
-import { ButtonSave } from "../../components/common/Button";
+import { ButtonIntro } from "../../components/common/Button";
 import RegisterForm from "../../components/intro/RegisterForm";
 
 function PageLogIn(props) {
@@ -61,16 +62,27 @@ function PageLogIn(props) {
   };
 
   return (
-    <div className="formComponentItemsColumn">
-      {!doRegister && (
-        <LogInForm formData={formData} onChange={handleInputChange} />
-      )}
-      {doRegister && (
-        <RegisterForm formData={formData} onChange={handleInputChange} />
-      )}
-      {!doRegister && <ButtonSave onClick={navigateAfterLogin} />}
-      <ButtonSave onClick={navigateAfterRegister} />
-    </div>
+    <form className="introContainer">
+      <div id="introForm" className="formContainer column padded rounded white">
+        <span id="icon" className="logo material-icons">
+          checklist
+        </span>
+        <h1 className="logo">Day Logger</h1>
+        <p className="logo">Get Your Day Organized.</p>
+        {!doRegister && (
+          <LogInForm formData={formData} onChange={handleInputChange} />
+        )}
+        {doRegister && (
+          <RegisterForm formData={formData} onChange={handleInputChange} />
+        )}
+        <div className="row spaceBetween marginTop">
+          {!doRegister && (
+            <ButtonIntro onClick={navigateAfterLogin} title="Login" />
+          )}
+          <ButtonIntro onClick={navigateAfterRegister} title="Sign up" />
+        </div>
+      </div>
+    </form>
   );
 }
 

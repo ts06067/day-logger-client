@@ -1,9 +1,5 @@
-function AdminTitle() {
-  return (
-    <div className="formEditTitle">
-      <div>Admin</div>
-    </div>
-  );
+function AdminTitle(props) {
+  return <div className="formTitle">Admin</div>;
 }
 
 export default AdminTitle;

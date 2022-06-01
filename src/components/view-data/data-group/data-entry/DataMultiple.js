@@ -39,12 +39,12 @@ function DataMultiple(props) {
   const answers = loggedData.answers;
 
   return (
-    <div className="formComponentItemsColumn">
+    <div className="column">
       <h3>{text}</h3>
       <div className="area-chart-wrapper">
         <BarChart
-          width={600}
-          height={500}
+          width={500}
+          height={300}
           data={makeTally(answers)}
           margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
           layout="vertical"

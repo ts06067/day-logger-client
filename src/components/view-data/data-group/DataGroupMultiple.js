@@ -4,7 +4,7 @@ function DataGroupMultiple(props) {
   const loggedDataByMCQArr = props.loggedDataByMCQArr;
 
   return (
-    <div className="formComponentItemsColumn">
+    <div className="formComponent column">
       {loggedDataByMCQArr.map((ld) => (
         <DataMultiple key={ld.question._id} loggedData={ld} />
       ))}

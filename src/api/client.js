@@ -61,7 +61,7 @@ export const loginAPIMethod = (user) => {
 };
 
 export const logoutAPIMethod = () => {
-  return api.post("/api/logout", {});
+  return api.post("/api/logout", {}).then(checkStatus).then(fetchData);
 };
 
 export const uploadImageToCloudinaryAPIMethod = (formData) => {

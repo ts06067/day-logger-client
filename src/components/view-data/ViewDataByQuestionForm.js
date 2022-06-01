@@ -50,7 +50,7 @@ function ViewDataByQuestionForm(props) {
   }, [loggedDataByQuestionArr]);
 
   return (
-    <div className="formComponentItemsColumn">
+    <div className="formComponent column padded rounded white">
       <DataGroupText loggedDataByTextQArr={loggedDataByTextQArr} />
       <DataGroupNumber loggedDataByNumberQArr={loggedDataByNumberQArr} />
       <DataGroupBoolean loggedDataByBooleanQArr={loggedDataByBooleanQArr} />

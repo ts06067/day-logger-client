@@ -4,6 +4,38 @@ function ButtonSubmit() {
   return <button className="btnSubmit">submit</button>;
 }
 
+function ButtonUnderLine(props) {
+  //inherited props
+  const title = props.title;
+
+  const onClick = (e) => {
+    e.preventDefault();
+    props.onClick();
+  };
+
+  return (
+    <button onClick={onClick} className="btnUnderline">
+      {title}
+    </button>
+  );
+}
+
+function ButtonIntro(props) {
+  //inherited props
+  const title = props.title;
+
+  const onClick = (e) => {
+    e.preventDefault();
+    props.onClick();
+  };
+
+  return (
+    <button onClick={onClick} className="btn intro">
+      {title}
+    </button>
+  );
+}
+
 function ButtonSave(props) {
   const onClick = (e) => {
     e.preventDefault();
@@ -12,7 +44,7 @@ function ButtonSave(props) {
 
   return (
     <button onClick={onClick} className="btnSave">
-      save
+      Save
     </button>
   );
 }
@@ -32,8 +64,8 @@ function ButtonRemoveImage(props) {
 
 function ButtonPrevDate(props) {
   return (
-    <button onClick={props.onClick} className="btnPrevDate">
-      prev
+    <button onClick={props.onClick} className="btn material-icons">
+      arrow_back_ios
     </button>
   );
 }
@@ -42,26 +74,53 @@ function ButtonNextDate(props) {
   const disable = props.disable;
 
   return (
-    <button disabled={disable} onClick={props.onClick} className="btnNextDate">
-      next
+    <button
+      disabled={disable}
+      onClick={props.onClick}
+      className="btn material-icons"
+    >
+      arrow_forward_ios
     </button>
   );
 }
 
-function ButtonAddQuestion(props) {
+function ButtonAdd(props) {
   const onClick = (e) => {
     e.preventDefault();
     props.onClick();
   };
 
   return (
-    <button onClick={onClick} className="btnAddQuestion">
+    <button onClick={onClick} className="btn material-icons">
       add
     </button>
   );
 }
 
-function ButtonDeleteQuestion(props) {
+function ButtonToggle(props) {
+  const onClick = (e) => {
+    e.preventDefault();
+    props.onClick();
+  };
+
+  const value = props.value;
+
+  if (!value) {
+    return (
+      <button onClick={onClick} className="btn material-icons">
+        event
+      </button>
+    );
+  } else {
+    return (
+      <button onClick={onClick} className="btn material-icons">
+        list_alt
+      </button>
+    );
+  }
+}
+
+function ButtonDelete(props) {
   const _id = props.idToDelete;
 
   const onClick = (e) => {
@@ -70,7 +129,7 @@ function ButtonDeleteQuestion(props) {
   };
 
   return (
-    <button onClick={onClick} className="btnDeleteQuestion">
+    <button onClick={onClick} className="btn delete material-icons">
       delete
     </button>
   );
@@ -78,11 +137,14 @@ function ButtonDeleteQuestion(props) {
 
 export {
   ButtonSubmit,
+  ButtonIntro,
+  ButtonUnderLine,
   ButtonSave,
   ButtonLogOut,
   ButtonRemoveImage,
   ButtonPrevDate,
   ButtonNextDate,
-  ButtonAddQuestion,
-  ButtonDeleteQuestion,
+  ButtonAdd,
+  ButtonToggle,
+  ButtonDelete,
 };

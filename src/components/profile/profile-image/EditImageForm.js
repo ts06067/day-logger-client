@@ -1,8 +1,9 @@
-import "../../common/css/FormComponent.css";
-
-import { ButtonRemoveImage } from "../../common/Button";
+import { ButtonRemoveImage, ButtonUnderLine } from "../../common/Button";
 import { ProfileBox } from "../../common/ProfileBox";
 import { InputFieldImage } from "../../common/InputField";
+
+import "../../common/css/FormComponent.css";
+import "../css/ProfileForm.css";
 
 function EditImageForm(props) {
   //inherited props
@@ -33,12 +34,12 @@ function EditImageForm(props) {
   };
 
   return (
-    <div className="formComponentItem">
-      <p>Profile Photo</p>
-      <div className="formProfileEditContainer">
+    <div className="formContainer column padded rounded white">
+      <span className="profileFormTitle">Profile photo</span>
+      <div className="row spaceBetween alignCenter marginTop">
         <ProfileBox value={imgUrl} />
         <InputFieldImage name={name} onChange={handleFileChange} />
-        <ButtonRemoveImage onClick={removeImage} />
+        <ButtonUnderLine onClick={removeImage} title="Remove Image" />
       </div>
     </div>
   );

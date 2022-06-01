@@ -35,12 +35,12 @@ function DataNumber(props) {
   const formattedAnswers = formatData(answers);
 
   return (
-    <div className="formComponentItemsColumn">
+    <div className="column">
       <h3>{text}</h3>
       <div className="line-chart-wrapper">
         <LineChart
-          width={600}
-          height={500}
+          width={500}
+          height={300}
           data={formattedAnswers}
           margin={{ top: 40, right: 40, bottom: 20, left: 20 }}
         >

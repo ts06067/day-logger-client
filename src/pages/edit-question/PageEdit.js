@@ -86,8 +86,8 @@ function PageEdit() {
   };
 
   return (
-    <div className="pageContainer">
-      <form>
+    <form className="pageContainer">
+      <div className="formContainer column">
         <EditQuestionTitle addQuestion={addQuestion} />
         {questionEntryArr.map((q, i) => (
           <EditQuestionForm
@@ -99,8 +99,8 @@ function PageEdit() {
           />
         ))}
         <ButtonSave onClick={saveQuestionArr} />
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 

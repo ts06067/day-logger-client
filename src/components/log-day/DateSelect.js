@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 
+import { dateTo8DStrSlash } from "../../utils/helper";
+
 import { ButtonPrevDate, ButtonNextDate } from "../common/Button";
+
+import "./css/DateSelect.css";
 
 function DateSelect(props) {
   //inherited props
@@ -34,9 +38,9 @@ function DateSelect(props) {
   };
 
   return (
-    <div className="formDateSelect">
+    <div className="formContainer row spaceBetween">
       <ButtonPrevDate onClick={setPrevDate} />
-      <div id="lbDate">{date.toISOString()}</div>
+      <div id="lbDate">{dateTo8DStrSlash(date)}</div>
       <ButtonNextDate disable={disable} onClick={setNextDate} />
     </div>
   );

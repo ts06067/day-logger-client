@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { ButtonDeleteQuestion } from "../common/Button";
+import { ButtonDelete } from "../common/Button";
 import {
   InputField,
   InputFieldGroup,
@@ -46,32 +46,27 @@ function EditQuestionForm(props) {
   };
 
   return (
-    <div className="formComponentItemsColumn">
+    <div className="formComponent column spaceBetween padded rounded white">
       <InputField
         name={"text"}
         value={formData.text}
         onChange={handleInputChange}
       />
-      <div className="formComponentItemsRow">
+      <div className="formComponent row spaceBetween noMarginBottom marginTop">
         <SelectOption
           name={"type_of_question"}
           value={formData.type_of_question}
           onChange={handleInputChange}
         />
-        <ButtonDeleteQuestion
-          onClick={deleteQuestion}
-          idToDelete={question._id}
-        />
+        <ButtonDelete onClick={deleteQuestion} idToDelete={question._id} />
       </div>
       {formData.type_of_question === "multiple" && (
-        <div className="formComponentItemsColumn">
-          <InputFieldGroup
-            index={index}
-            name={"option"}
-            values={formData.option}
-            onChange={handleInputGroupChange}
-          />
-        </div>
+        <InputFieldGroup
+          index={index}
+          name={"option"}
+          values={formData.option}
+          onChange={handleInputGroupChange}
+        />
       )}
     </div>
   );

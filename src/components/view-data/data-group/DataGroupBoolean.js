@@ -4,7 +4,7 @@ function DataGroupBoolean(props) {
   const loggedDataByBooleanQArr = props.loggedDataByBooleanQArr;
 
   return (
-    <div className="formComponentItemsColumn">
+    <div className="formComponent column">
       {loggedDataByBooleanQArr.map((ld) => (
         <DataBoolean key={ld.question._id} loggedData={ld} />
       ))}

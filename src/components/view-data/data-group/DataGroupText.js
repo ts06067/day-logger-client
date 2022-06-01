@@ -4,7 +4,7 @@ function DataGroupText(props) {
   const loggedDataByTextQArr = props.loggedDataByTextQArr;
 
   return (
-    <div className="formComponentItemsColumn">
+    <div className="column">
       {loggedDataByTextQArr.map((ld) => (
         <DataText key={ld.question._id} loggedData={ld} />
       ))}

@@ -52,6 +52,14 @@ export const dateTo8DStrHyphen = function (d) {
   return "" + year + "-" + month + "-" + date;
 };
 
+export const dateTo8DStrSlash = function (d) {
+  //to YYYY/MM/DD
+  const year = d.getFullYear();
+  let month = d.getMonth() + 1;
+  const date = d.getDate();
+  return "" + month + "/" + date + "/" + year;
+};
+
 export const onFalseError = function (e, msg) {
   if (!e) {
     throw Error("msg");

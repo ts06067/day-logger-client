@@ -9,8 +9,10 @@ function LogInForm(props) {
   const { email, password } = formData;
 
   return (
-    <div className="formComponentItemsColumn">
+    <div className="formComponent column">
+      <span>ID</span>
       <InputField name={"email"} value={email} onChange={onChange} />
+      <span>Password</span>
       <InputField name={"password"} value={password} onChange={onChange} />
     </div>
   );

@@ -72,21 +72,23 @@ function ViewDataByDateForm(props) {
     const answer = ld.answer;
 
     return (
-      <div key={id} className="formComponentItemsColumn">
+      <div key={id} className="column">
         <h3>{text}</h3>
-        <p>{answer}</p>
+        <span>{answer}</span>
       </div>
     );
   };
 
   return (
-    <div className="formComponentItemsColumn">
-      <Calendar
-        value={date}
-        onChange={setDate}
-        tileClassName={tileClassName}
-        tileDisabled={tileDisabled}
-      />
+    <div className="formComponent column padded rounded white">
+      <div className="row center">
+        <Calendar
+          value={date}
+          onChange={setDate}
+          tileClassName={tileClassName}
+          tileDisabled={tileDisabled}
+        />
+      </div>
       {loggedDataArr.map(render)}
     </div>
   );

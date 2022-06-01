@@ -1,7 +1,29 @@
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+
+import { ProfileBoxClickable } from "./ProfileBox";
+
 import "./css/TopBar.css";
 
-import { Link, useLocation } from "react-router-dom";
-import { ProfileBoxClickable } from "./ProfileBox";
+function TopBarLink(props) {
+  const link = props.link;
+  const title = props.title;
+  const path = props.path;
+
+  if (path === link) {
+    return (
+      <Link to={link}>
+        <div className="topBarNavigateLink active">{title}</div>
+      </Link>
+    );
+  } else {
+    return (
+      <Link to={link}>
+        <div className="topBarNavigateLink">{title}</div>
+      </Link>
+    );
+  }
+}
 
 function TopBar(props) {
   //inherited props
@@ -11,6 +33,11 @@ function TopBar(props) {
   //own props
   const location = useLocation();
   const imgUrl = profile && profile.imgUrl;
+  const [path, setPath] = useState(location.pathname);
+
+  useEffect(() => {
+    setPath(location.pathname);
+  }, [location]);
 
   return (
     isLoggedIn && (
@@ -19,23 +46,9 @@ function TopBar(props) {
           Day Logger
         </div>
         <div className="topBarItem" id="topBarNavigate">
-          <Link to={"/logday"}>
-            <div className="topBarNavigateLink">
-              <div className="topBarNavigateLinkText">Log Day</div>
-            </div>
-          </Link>
-
-          <Link to={"/edit"}>
-            <div className="topBarNavigateLink">
-              <div className="topBarNavigateLinkText">Edit Questions</div>
-            </div>
-          </Link>
-
-          <Link to={"/viewdata"}>
-            <div className="topBarNavigateLink">
-              <div className="topBarNavigateLinkText">View Data</div>
-            </div>
-          </Link>
+          <TopBarLink link="/logday" title="Log Day" path={path} />
+          <TopBarLink link="/edit" title="Edit Question" path={path} />
+          <TopBarLink link="/viewdata" title="View Data" path={path} />
         </div>
 
         <div className="topBarItem">
