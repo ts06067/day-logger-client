@@ -58,11 +58,13 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <TopBar
-          isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}
-          profile={profile}
-        />
+        {isLoggedIn && (
+          <TopBar
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            profile={profile}
+          />
+        )}
         <AppRoutes
           isLoggedIn={isLoggedIn}
           setIsLoggedIn={setIsLoggedIn}
