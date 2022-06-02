@@ -42,7 +42,6 @@ function EditQuestionForm(props) {
     const newFormData = { ...formData, option };
     setFormData(newFormData);
     editQuestion("option", option, index);
-    console.log("new option: " + option);
   };
 
   return (

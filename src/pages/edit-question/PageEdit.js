@@ -37,7 +37,6 @@ function PageEdit() {
       option: [],
     };
     const newQuestionEntryArr = [...questionEntryArr, newQuestionEntry];
-    console.log(newQuestionEntryArr);
     setQuestionEntryArr(newQuestionEntryArr);
   };
 
