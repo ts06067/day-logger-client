@@ -7,6 +7,18 @@ function InputField(props) {
   const value = props.value;
   const onChange = props.onChange;
 
+  if (name === "password") {
+    return (
+      <input
+        type="password"
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={"Enter..."}
+      />
+    );
+  }
+
   return (
     <input
       name={name}
