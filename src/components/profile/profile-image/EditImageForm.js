@@ -34,7 +34,7 @@ function EditImageForm(props) {
   };
 
   return (
-    <div className="formContainer column padded rounded white">
+    <div className="formComponent column padded rounded white">
       <span className="profileFormTitle">Profile photo</span>
       <div className="row spaceBetween alignCenter marginTop">
         <ProfileBox value={imgUrl} />

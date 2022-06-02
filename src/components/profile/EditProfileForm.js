@@ -23,7 +23,7 @@ function EditProfileForm(props) {
         setFormData={setFormData}
         setImgToUpload={setImgToUpload}
       />
-      <div className="formComponent column padded rounded white marginTop">
+      <div className="formComponent column padded rounded white">
         <span className="profileFormTitle">Name</span>
         <InputField name={"name"} value={name} onChange={onChange} />
       </div>

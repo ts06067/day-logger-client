@@ -1,5 +1,6 @@
 import "../common/css/Page.css";
 
+import { saveAs } from "file-saver";
 import { useEffect, useState } from "react";
 
 import { getAllLoggedDataSetAPIMethod } from "../../api/client";
@@ -7,6 +8,7 @@ import { getAllLoggedDataSetAPIMethod } from "../../api/client";
 import ViewDataTitle from "../../components/view-data/ViewDataTitle";
 import ViewDataByQuestionForm from "../../components/view-data/ViewDataByQuestionForm";
 import ViewDataByDateForm from "../../components/view-data/ViewDataByDateForm";
+import { ButtonUnderLine } from "../../components/common/Button";
 
 function PageViewData() {
   const [toggleViewData, setToggleViewData] = useState(false);
@@ -73,6 +75,14 @@ function PageViewData() {
     setLoggedDataByQuestionArr(newLoggedDataByQuestionArr);
   }, [loggedDataSetArr]);
 
+  const downloadData = () => {
+    const blob = new Blob([JSON.stringify(loggedDataSetArr)], {
+      type: "plain/text;charset-utf-8",
+    });
+
+    saveAs(blob, "data.json");
+  };
+
   return (
     <div className="pageContainer">
       <div className="formContainer column">
@@ -88,6 +98,9 @@ function PageViewData() {
         {!toggleViewData && (
           <ViewDataByDateForm loggedDataSetArr={loggedDataSetArr} />
         )}
+        <div className="row">
+          <ButtonUnderLine onClick={downloadData} title="Download All Data" />
+        </div>
       </div>
     </div>
   );
