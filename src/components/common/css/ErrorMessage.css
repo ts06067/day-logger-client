@@ -3,7 +3,7 @@
   box-shadow: 0 5px 5px gray;
   font-size: large;
   width: 600px;
-  position: absolute;
+  position: fixed;
   top: 0;
   margin: 20px;
   padding: 20px;
