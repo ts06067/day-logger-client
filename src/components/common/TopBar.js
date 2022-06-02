@@ -28,6 +28,7 @@ function TopBarLink(props) {
 function TopBar(props) {
   //inherited props
   const isLoggedIn = props.isLoggedIn;
+  const setIsLoggedIn = props.setIsLoggedIn;
   const profile = props.profile;
 
   //own props
@@ -38,6 +39,11 @@ function TopBar(props) {
   useEffect(() => {
     setPath(location.pathname);
   }, [location]);
+
+  useEffect(() => {
+    const newIsLoggedIn = sessionStorage.getItem("isLoggedIn");
+    setIsLoggedIn(newIsLoggedIn === "false" ? false : true);
+  }, [setIsLoggedIn]);
 
   return (
     isLoggedIn && (

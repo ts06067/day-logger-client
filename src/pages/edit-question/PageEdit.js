@@ -10,9 +10,11 @@ import {
 import { ButtonSave } from "../../components/common/Button";
 import { EditQuestionForm } from "../../components/edit-question/EditQuestionForm";
 import { EditQuestionTitle } from "../../components/edit-question/EditQuestionTitle";
+import ErrorMessage from "../../components/common/ErrorMessage";
 
 function PageEdit() {
   const [questionEntryArr, setQuestionEntryArr] = useState([]);
+  const [displayError, setDisplayError] = useState(false);
 
   //retrieve preset on load
   useEffect(() => {
@@ -71,6 +73,7 @@ function PageEdit() {
         (type_of_question === "multiple" && option.length === 0)
       ) {
         console.log("should be nonempty");
+        setDisplayError(true);
         error = true;
         return;
       }
@@ -87,6 +90,13 @@ function PageEdit() {
 
   return (
     <form className="pageContainer">
+      {displayError && (
+        <ErrorMessage
+          displayError={displayError}
+          setDisplayError={setDisplayError}
+          title="Save failed. Check your entries filled in."
+        />
+      )}
       <div className="formContainer column">
         <EditQuestionTitle addQuestion={addQuestion} />
         {questionEntryArr.map((q, i) => (

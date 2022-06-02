@@ -143,19 +143,17 @@ div.formContainer > div.formComponent:hover {
 }
 
 @media screen and (max-width: 600px) {
-  .formComponentItem {
-    width: 100%;
+  .formComponent,
+  .formContainer {
+    width: 100vw;
+    border-radius: 0;
   }
 
-  .formComponentItemsRow {
-    width: 100%;
+  button {
+    margin: 0 20px 0 20px;
   }
 
-  .formDateSelect {
-    width: 100%;
-  }
-
-  .formEditQuestionTitle {
-    width: 100%;
+  .formTitle {
+    padding: 0 20px 0 20px;
   }
 }

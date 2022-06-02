@@ -10,7 +10,7 @@ function AdminForm(props) {
   const { _id, name, email } = user;
 
   return (
-    <div className="formContainer column padded rounded white marginTop">
+    <div className="formComponent column padded rounded white">
       <div className="row spaceBetween marginTop">
         <h1>{name}</h1>
         <ButtonDelete onClick={deleteUser} idToDelete={_id} />

@@ -1,0 +1,23 @@
+.error {
+  background-color: var(--standardBackgroundColor);
+  box-shadow: 0 5px 5px gray;
+  font-size: large;
+  width: 600px;
+  position: absolute;
+  top: 0;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--formRadius);
+  z-index: 1;
+}
+
+.open {
+  visibility: visible;
+}
+
+.close {
+  visibility: hidden;
+}

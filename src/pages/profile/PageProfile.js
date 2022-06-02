@@ -105,6 +105,7 @@ function PageProfile(props) {
     await logoutAPIMethod().then(() => {
       console.log("LogOut Success");
       setIsLoggedIn(false);
+      sessionStorage.setItem("isLoggedIn", false);
       navigate("/login");
     });
   };

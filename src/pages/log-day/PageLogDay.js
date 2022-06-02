@@ -14,12 +14,14 @@ import {
 import { ButtonSave } from "../../components/common/Button";
 import { LogDayForm } from "../../components/log-day/LogDayForm";
 import { DateSelect } from "../../components/log-day/DateSelect";
+import ErrorMessage from "../../components/common/ErrorMessage";
 
 function PageLogDay() {
   const [isLogged, setIsLogged] = useState(false);
   const [questionEntryArr, setQuestionEntryArr] = useState([]);
   const [loggedDataEntryArr, setLoggedDataEntryArr] = useState([]);
   const [date, setDate] = useState(getOClock());
+  const [displayError, setDisplayError] = useState(false);
 
   //retrieve preset on load
   useEffect(() => {
@@ -83,6 +85,7 @@ function PageLogDay() {
 
       if (answer.length === 0) {
         console.log("answer should be nonempty");
+        setDisplayError(true);
         error = true;
         return;
       }
@@ -100,12 +103,24 @@ function PageLogDay() {
       createLoggedDataSetAPIMethod({
         logged_data_arr: { ...loggedDataEntryArr },
         date,
-      }).then((res) => console.log("Saving New LoggedDataSet Successful"));
+      })
+        .then((res) => console.log("Saving New LoggedDataSet Successful"))
+        .catch(() => {
+          console.log("Save Fail");
+          setDisplayError(true);
+        });
     }
   };
 
   return (
     <form className="pageContainer">
+      {displayError && (
+        <ErrorMessage
+          displayError={displayError}
+          setDisplayError={setDisplayError}
+          title="Save failed. Check your entries filled in."
+        />
+      )}
       <div className="formContainer column">
         <DateSelect date={date} setDate={setDate} />
         <div className="marginTop" />
