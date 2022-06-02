@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-recharts": "^2.0.0"
+    "babel-plugin-recharts": "^2.0.0",
+    "jest": "^28.1.0"
   }
 }
