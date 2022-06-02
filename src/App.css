@@ -48,6 +48,7 @@ body {
   background-color: var(--alternativeBackgroundColor);
   user-select: none;
   box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
 }
 
 input:focus,
