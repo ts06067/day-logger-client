@@ -18,5 +18,5 @@ PW: `123456`
 
 ## Deployment
 
-client: https://6298e036ac39cb00099f21b8--incomparable-brigadeiros-70bce1.netlify.app/login \
+client: https://6298e1a03664e600087f7aae--incomparable-brigadeiros-70bce1.netlify.app/ \
 server: https://younwoo-ki-day-logger-app.herokuapp.com/
