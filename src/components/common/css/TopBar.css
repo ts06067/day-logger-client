@@ -50,6 +50,7 @@
 }
 
 a {
+  color: var(--standardTextColor);
   text-decoration: none;
 }
 
